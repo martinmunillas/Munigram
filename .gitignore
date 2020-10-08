@@ -107,4 +107,5 @@ media/
 *.db
 *.pid
 
-secrets.py
+my_secrets
+

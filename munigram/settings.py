@@ -1,6 +1,7 @@
 from pathlib import Path
+import os
 
-from secrets import secret_key
+from my_secrets import secret_key
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -31,6 +32,7 @@ INSTALLED_APPS = [
 
     #local
     'posts',
+    'users',
 ]
 
 MIDDLEWARE = [
@@ -112,3 +114,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+MEDIA_URL = '/media/'
