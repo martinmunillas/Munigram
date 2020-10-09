@@ -2,6 +2,7 @@ from datetime import datetime
 
 from django.http import HttpResponse
 from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
 
 posts = [
     {
@@ -33,5 +34,6 @@ posts = [
     }
 ]
 
+@login_required
 def list_posts(req):
-    return render(req, 'feed.html', {'posts': posts})
+    return render(req, 'posts/feed.html', {'posts': posts})
