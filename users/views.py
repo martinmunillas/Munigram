@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 from django.db.utils import IntegrityError
 
 from users.models import Profile
-
+from users.forms import ProfileForm
 def login_view(request):
     if request.method == 'POST':
         username = request.POST['username']
@@ -49,4 +49,18 @@ def signup_view(request):
 
 @login_required
 def update_profile(request):
-    return render(request, 'users/update_profile.html')
+    profile = request.user.profile
+    if request.method == 'POST':
+        form = ProfileForm(request.POST, request.FILES)
+        if form.is_valid():
+            data = form.cleaned_data
+
+            profile.website = data['website'] 
+            profile.biography = data['biography'] 
+            profile.phone_number = data['phone_number'] 
+            profile.picture = data['picture']
+            profile.save()
+            return redirect('update_profile')
+    else:
+        form = ProfileForm
+    return render(request, 'users/update_profile.html', {'user': request.user, 'profile': profile, 'form': form})
