@@ -8,7 +8,9 @@ from posts import views as posts_views
 from users import views as user_views
 
 urlpatterns = [
-    path('posts/', posts_views.list_posts, name='feed'),
+    path('', posts_views.list_posts, name='feed'),
+    path('posts/new/', posts_views.create_post, name='create_post'),
+
     path('admin/', admin.site.urls, name='admin'),
     path('users/login/', user_views.login_view, name='login'),
     path('users/logout/', user_views.logout_view, name='logout'),
