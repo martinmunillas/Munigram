@@ -11,22 +11,7 @@
 
     <form method="POST" action="{% url "signup" %}">
         {% csrf_token %}
-        <div class="form-group mb-3">
-            <input class="form-control mb-2" type="email" placeholder="Email" name="email" required="true" />
-            <input class="form-control mb-2" type="password" placeholder="Password" name="password" required="true" />
-            <input class="form-control mb-2" type="password" placeholder="Password Confirmation" name="password_conf" required="true" />
-        </div>
-        
-        <div class="form-group mt-3">
-            <input class="form-control mb-2" type="text" placeholder="Username" name="username" required="true" />
-            <input class="form-control mb-2" type="text" placeholder="First Name" name="first_name" required="true" />
-            <input class="form-control mb-2" type="text" placeholder="Last Name" name="last_name" required="true" />
-        </div>
-
-        {% if error %}
-            <p class="alert alert-danger ">{{error}}</p>
-        {% endif %}
-
+        {{ form.as_p }}
         <button class="btn btn-primary btn-block mt-5" type="submit">Sign up</button>
 
     </form>
