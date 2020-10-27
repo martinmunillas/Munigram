@@ -5,7 +5,7 @@
     <a
       class="navbar-brand pr-5"
       style="border-right: 1px solid #efefef"
-      href="{% url 'feed' %}"
+      href="{% url 'posts:feed' %}"
     >
       <img
         src="{% static 'img/logo.png' %}"
@@ -17,7 +17,7 @@
     <div class="collapse navbar-collapse">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-          <a href="{% url 'feed' %}">
+          <a href="{% url 'users:detail' request.user.username %}">
             {% if request.user.profile.picture %}
             <img
               src="{{ request.user.profile.picture.url }}"
@@ -35,13 +35,13 @@
         </li>
 
         <li class="nav-item nav-icon">
-          <a href="{% url 'create_post' %}">
+          <a href="{% url 'posts:create_post' %}">
             <i class="fas fa-plus"></i>
           </a>
         </li>
 
         <li class="nav-item nav-icon">
-          <a href="{% url 'logout' %}">
+          <a href="{% url 'users:logout' %}">
             <i class="fas fa-sign-out-alt"></i>
           </a>
         </li>
